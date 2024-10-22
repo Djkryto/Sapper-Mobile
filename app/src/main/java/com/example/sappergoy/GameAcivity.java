@@ -167,14 +167,13 @@ public class GameAcivity extends AppCompatActivity {
 
     private void Check(TextView view){
         int index = _allChain.indexOf(view);
-        int row = index / 7;
         int column = index % 7;
         Integer count = 0;
         if(index < 7){
             if(index == 0){
-                TextView textOne = _allChain.get(1);
-                TextView textTwo = _allChain.get(13);
-                TextView textTree = _allChain.get(12);
+                TextView textOne = _allChain.get(index + 1);
+                TextView textTwo = _allChain.get(index + 7);
+                TextView textTree = _allChain.get(index + 8);
 
                 count = CheckOnMine(textOne, count);
                 count = CheckOnMine(textTwo, count);
@@ -196,9 +195,9 @@ public class GameAcivity extends AppCompatActivity {
             }
 
             if(index == 6){
-                TextView textOne = _allChain.get(12);
-                TextView textTwo = _allChain.get(11);
-                TextView textTree = _allChain.get(5);
+                TextView textOne = _allChain.get(index + 7);
+                TextView textTwo = _allChain.get(index + 6);
+                TextView textTree = _allChain.get(index -1);
 
                 count = CheckOnMine(textOne, count);
                 count = CheckOnMine(textTwo, count);
@@ -206,7 +205,7 @@ public class GameAcivity extends AppCompatActivity {
             }
         }
 
-        if(index > 6 && index < 62){
+        if(index > 6 && index < 63){
             if(column == 0){
                 TextView textOne = _allChain.get(index - 7);
                 TextView textTwo = _allChain.get(index - 6);
@@ -257,17 +256,17 @@ public class GameAcivity extends AppCompatActivity {
         }
 
         if(index > 62){
-            if(index == 62){
+            if(index == 63){
                 TextView textOne = _allChain.get(index + 1);
                 TextView textTwo = _allChain.get(index - 7);
-                TextView textTree = _allChain.get(index -6);
+                TextView textTree = _allChain.get(index - 6);
 
                 count = CheckOnMine(textOne, count);
                 count = CheckOnMine(textTwo, count);
                 count = CheckOnMine(textTree, count);
             }
 
-            if(index > 62  && index < 69){
+            if(index > 63  && index < 69){
                 TextView textOne = _allChain.get(index - 1);
                 TextView textTwo = _allChain.get(index + 1);
                 TextView textTree = _allChain.get(index - 6);

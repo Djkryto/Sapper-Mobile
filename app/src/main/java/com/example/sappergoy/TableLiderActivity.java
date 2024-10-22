@@ -45,7 +45,6 @@ public class TableLiderActivity extends AppCompatActivity {
         _context = (Context) getIntent().getSerializableExtra("Context");
         if(_context != null){
             Init();
-            return;
         }
     }
 
