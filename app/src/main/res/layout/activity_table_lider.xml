@@ -5,11 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TableLiderActivity"><![CDATA[>
-
-
-
-    ]]>
+    android:background="#FFFFFF"
+    tools:context=".TableLiderActivity">
 
     <TextView
         android:id="@+id/textView9"
@@ -19,7 +16,7 @@
         android:layout_marginTop="89dp"
         android:layout_marginEnd="108dp"
         android:layout_marginBottom="45dp"
-        android:text="Таблица лидеров"
+        android:text="@string/Table_Lider"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,16 +25,18 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="40dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="352dp"
+        android:layout_width="72dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="11dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="139dp"
+        android:contentDescription="Back"
         android:onClick="Back"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
@@ -64,7 +63,7 @@
             android:minHeight="100px">
 
             <TextView
-                android:id="@+id/userPoint"
+                android:id="@+id/TextView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="70px"
@@ -75,7 +74,7 @@
                 android:textAllCaps="false" />
 
             <TextView
-                android:id="@+id/userPoint"
+                android:id="@+id/TextView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0px"
@@ -108,7 +107,7 @@
                 android:textAllCaps="false" />
 
             <TextView
-                android:id="@+id/userPoint"
+                android:id="@+id/TextView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0px"
@@ -140,7 +139,7 @@
                 android:textAllCaps="false" />
 
             <TextView
-                android:id="@+id/userPoint"
+                android:id="@+id/TextView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0px"
@@ -161,7 +160,7 @@
             android:minHeight="100px">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/textView67"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="70px"
@@ -172,7 +171,7 @@
                 android:textAllCaps="false" />
 
             <TextView
-                android:id="@+id/userPoint"
+                android:id="@+id/TextView101"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0px"
@@ -193,7 +192,7 @@
             android:minHeight="100px">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/textView95"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="70px"

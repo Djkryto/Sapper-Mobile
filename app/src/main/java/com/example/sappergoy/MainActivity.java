@@ -83,14 +83,11 @@ public class MainActivity extends AppCompatActivity {
                     button.setChecked(true);
                 }
             }
-            Init();
+            if(_context.Color != null){
+                findViewById(R.id.main).setBackgroundColor(_context.Color);
+            }
             return;
         }
         _context = new Context();
-    }
-    private void Init(){
-        if(_context.Color != null){
-            findViewById(R.id.main).setBackgroundColor(_context.Color);
-        }
     }
 }

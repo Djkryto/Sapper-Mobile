@@ -36,9 +36,10 @@ public class TableLiderActivity extends AppCompatActivity {
     }
 
     public void Back(View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("Context",_context);
         startActivity(intent);
+        finish();
     }
 
     private void GetContext(){

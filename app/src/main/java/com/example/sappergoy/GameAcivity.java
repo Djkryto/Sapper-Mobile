@@ -40,47 +40,18 @@ public class GameAcivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         _timer = findViewById(R.id.timer);
-        GridLayout gridLayout = findViewById(R.id.gridLayout);
-        // Генерация ячеек
-        for(int i = 0; i < 70; i++){
-            TextView text = new TextView(this);
-            text.setBackgroundColor(Color.GRAY);
-            GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
-            layoutParams.width = 100;
-            layoutParams.height = 100;
-            layoutParams.setMargins(5,5,5,5);
-            text.setLayoutParams(layoutParams);
-            text.setGravity(Gravity.CENTER);
-            text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            text.setOnClickListener(this::ClickSoket);
-            gridLayout.addView(text);
-            _allChain.add(text);
-        }
-
-        _context = (Context) getIntent().getSerializableExtra("Context");
-        int difficulty =  _context.Difficulty;
-        int countMine = 15 * (difficulty + 1);
+        InitCell();
         Init();
-        // Инициализвация мин
-        for(int i = 0; i < countMine;i++){
-            Random random = new Random();
-            int ranI = random.nextInt(70);
-            boolean off = false;
-            for (int j = 0; j < _allChain.size();j++){
-                if(_mine.contains(_allChain.get(ranI))){
-                    i--;
-                    off=true;
-                    break;
-                }
-            }
-            if(off) continue;
-            _mine.add(_allChain.get(ranI));
-        }
     }
 
     protected void onResume() {
         super.onResume();
         _handler.postDelayed(task, 1000);
+        if(_gameOver){
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }
     }
 
     protected void onPause(){
@@ -89,9 +60,16 @@ public class GameAcivity extends AppCompatActivity {
     }
 
     public void Back(View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         _context.Points = _points;
         intent.putExtra("Context", _context);
+        startActivity(intent);
+        finish();
+    }
+
+    public void Restart(View view){
+        Intent intent= getIntent();
+        finish();
         startActivity(intent);
     }
 
@@ -330,9 +308,51 @@ public class GameAcivity extends AppCompatActivity {
                 .create().show();
     }
 
+    private void InitCell(){
+        GridLayout gridLayout = findViewById(R.id.gridLayout);
+        // Генерация ячеек
+        for(int i = 0; i < 70; i++){
+            TextView text = new TextView(this);
+            text.setBackgroundColor(Color.GRAY);
+            GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
+            layoutParams.width = 100;
+            layoutParams.height = 100;
+            layoutParams.setMargins(5,5,5,5);
+            text.setLayoutParams(layoutParams);
+            text.setGravity(Gravity.CENTER);
+            text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            text.setOnClickListener(this::ClickSoket);
+            text.setTextColor(Color.BLACK);
+            gridLayout.addView(text);
+            _allChain.add(text);
+        }
+
+        _context = (Context) getIntent().getSerializableExtra("Context");
+        int difficulty =  _context.Difficulty;
+        int countMine = 15 * (difficulty + 1);
+        // Инициализвация мин
+        for(int i = 0; i < countMine;i++){
+            Random random = new Random();
+            int ranI = random.nextInt(70);
+            boolean off = false;
+            for (int j = 0; j < _allChain.size();j++){
+                if(_mine.contains(_allChain.get(ranI))){
+                    i--;
+                    off=true;
+                    break;
+                }
+            }
+            if(off) continue;
+            _mine.add(_allChain.get(ranI));
+        }
+    }
+
     private void Init(){
-        if(_context.Color != null){
-            findViewById(R.id.main).setBackgroundColor(_context.Color);
+        _context = (Context) getIntent().getSerializableExtra("Context");
+        if(_context != null){
+            if(_context.Color != null){
+                findViewById(R.id.main).setBackgroundColor(_context.Color);
+            }
         }
     }
 }
